@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="100%" height="100%">
+  <defs>
+    <!-- Dark Tech Background Gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d" />
+      <stop offset="50%" stop-color="#07152b" />
+      <stop offset="100%" stop-color="#0d1b2a" />
+    </linearGradient>
+
+    <!-- Accent Text Gradient -->
+    <linearGradient id="text-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="50%" stop-color="#4facfe" />
+      <stop offset="100%" stop-color="#00c6ff" />
+    </linearGradient>
+
+    <!-- Glowing Node Gradient -->
+    <radialGradient id="glow-cyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f2fe" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#00f2fe" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="glow-purple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9d4edd" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#9d4edd" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Keyframe Animations -->
+    <style>
+      .pulse-node {
+        animation: pulse 3s infinite alternate ease-in-out;
+      }
+      .pulse-node-2 {
+        animation: pulse 4s infinite alternate ease-in-out 1s;
+      }
+      .dash-line {
+        stroke-dasharray: 8 12;
+        animation: dash 20s linear infinite;
+      }
+      .glow-ring {
+        animation: ring-scale 3s infinite ease-out;
+      }
+      @keyframes pulse {
+        0% { opacity: 0.3; transform: scale(0.98); }
+        100% { opacity: 0.9; transform: scale(1.02); }
+      }
+      @keyframes dash {
+        to { stroke-dashoffset: -200; }
+      }
+      @keyframes ring-scale {
+        0% { r: 5px; opacity: 0.9; }
+        100% { r: 25px; opacity: 0; }
+      }
+      .foreground-title {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        fill: #ffffff;
+      }
+      .foreground-subtitle {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 400;
+        fill: #94a3b8;
+      }
+      .foreground-pill {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        font-weight: 600;
+        font-size: 12px;
+        fill: #00f2fe;
+      }
+    </style>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="320" rx="16" fill="url(#bg-gradient)" />
+
+  <!-- Animated Mesh Network / Dynamic Background Elements (Layered BEHIND text) -->
+  <g opacity="0.35">
+    <!-- Connecting dashed network lines -->
+    <line x1="100" y1="60" x2="300" y2="180" stroke="#00f2fe" stroke-width="1.5" class="dash-line" />
+    <line x1="300" y1="180" x2="550" y2="80" stroke="#4facfe" stroke-width="1.5" class="dash-line" />
+    <line x1="550" y1="80" x2="850" y2="240" stroke="#9d4edd" stroke-width="1.5" class="dash-line" />
+    <line x1="850" y1="240" x2="1100" y2="100" stroke="#00c6ff" stroke-width="1.5" class="dash-line" />
+    <line x1="300" y1="180" x2="850" y2="240" stroke="#00f2fe" stroke-width="1" stroke-opacity="0.5" />
+    <line x1="100" y1="260" x2="450" y2="280" stroke="#4facfe" stroke-width="1" stroke-opacity="0.4" />
+    <line x1="450" y1="280" x2="1100" y2="220" stroke="#9d4edd" stroke-width="1" stroke-opacity="0.4" />
+
+    <!-- Glowing Network Nodes -->
+    <circle cx="100" cy="60" r="30" fill="url(#glow-cyan)" />
+    <circle cx="100" cy="60" r="4" fill="#00f2fe" />
+
+    <circle cx="300" cy="180" r="45" fill="url(#glow-purple)" class="pulse-node" />
+    <circle cx="300" cy="180" r="6" fill="#9d4edd" />
+
+    <circle cx="550" cy="80" r="35" fill="url(#glow-cyan)" class="pulse-node-2" />
+    <circle cx="550" cy="80" r="5" fill="#00f2fe" />
+
+    <circle cx="850" cy="240" r="50" fill="url(#glow-cyan)" class="pulse-node" />
+    <circle cx="850" cy="240" r="7" fill="#4facfe" />
+    
+    <circle cx="1100" cy="100" r="40" fill="url(#glow-purple)" />
+    <circle cx="1100" cy="100" r="5" fill="#9d4edd" />
+  </g>
+
+  <!-- Geometric Grid Accent Overlay -->
+  <path d="M 0,160 Q 300,120 600,160 T 1200,160" fill="none" stroke="#1e293b" stroke-width="2" opacity="0.6" />
+
+  <!-- FOREGROUND LAYER: Content, Title, Subtitle, Pills (Clean & Always Visible) -->
+  <g transform="translate(60, 0)">
+    <!-- Category Pills -->
+    <g transform="translate(0, 50)">
+      <rect x="0" y="0" width="100" height="26" rx="13" fill="#00f2fe" fill-opacity="0.12" stroke="#00f2fe" stroke-opacity="0.4" stroke-width="1" />
+      <text x="50" y="17" text-anchor="middle" class="foreground-pill">OSS / BSS</text>
+
+      <rect x="112" y="0" width="130" height="26" rx="13" fill="#4facfe" fill-opacity="0.12" stroke="#4facfe" stroke-opacity="0.4" stroke-width="1" />
+      <text x="177" y="17" text-anchor="middle" class="foreground-pill" fill="#4facfe">5G &amp; ORAN RIC</text>
+
+      <rect x="254" y="0" width="120" height="26" rx="13" fill="#9d4edd" fill-opacity="0.12" stroke="#9d4edd" stroke-opacity="0.4" stroke-width="1" />
+      <text x="314" y="17" text-anchor="middle" class="foreground-pill" fill="#c77dff">SDN &amp; NFV MANO</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="135" font-size="40" class="foreground-title">
+      Awesome Telecom Network Automation
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="175" font-size="18" class="foreground-subtitle">
+      Curated Ecosystem of SaaS Platforms, 5G Core, O-RAN RIC, ETSI OSM, &amp; Cloud-Native Orchestration
+    </text>
+
+    <!-- Tech Badges Bar in Header -->
+    <g transform="translate(0, 215)">
+      <!-- Badge 1: 5G / Core -->
+      <rect x="0" y="0" width="130" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="15" y="21" font-family="sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">📡 5G &amp; Core</text>
+
+      <!-- Badge 2: ETSI MANO -->
+      <rect x="142" y="0" width="145" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="157" y="21" font-family="sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">⚙️ ETSI MANO</text>
+
+      <!-- Badge 3: Intent Slicing -->
+      <rect x="299" y="0" width="150" height="32" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+      <text x="314" y="21" font-family="sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">🌐 Network Slicing</text>
+    </g>
+
+    <!-- Bottom Timestamp & Standard Badge -->
+    <text x="0" y="280" font-family="sans-serif" font-size="12" fill="#64748b">
+      Updated October 2026 • Curated for Telecom Engineers &amp; Network Architects
+    </text>
+  </g>
+</svg>
